@@ -342,6 +342,9 @@
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
+            background-color: #0F3F4A;
+            padding: 2rem;
+            border-radius: 0.75rem;
         }
 
         .stat-item {
@@ -356,12 +359,14 @@
             color: #4ECFB5;
             margin-bottom: 0.5rem;
             transition: all 0.3s ease;
+            display: block;
         }
 
         .stat-label {
             font-size: 1rem;
             color: #fff;
             font-weight: 500;
+            display: block;
         }
 
         .services {
@@ -829,20 +834,25 @@
         }
 
         .slider-arrow {
-            background: none;
-            border: 2px solid #4ECFB5;
-            color: #4ECFB5;
-            width: 40px;
-            height: 40px;
+            background-color: #4ECFB5;
+            border: none;
+            color: #fff;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
             transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            line-height: 1;
         }
 
         .slider-arrow:hover {
-            background-color: #4ECFB5;
-            color: #0F3F4A;
+            background-color: #1B6B7B;
+            transform: scale(1.1);
         }
 
         .slider-dots {
@@ -1056,7 +1066,7 @@
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get a Quote</a>
             </div>
-            <p class="hero-certs">HIPAA Certified | OSHA Compliant | Fully Insured | HAZMAT Aware</p>
+            <p class="hero-certs">HIPAA Certified | OSHA Compliant | HAZMAT Aware | Fully Insured</p>
         </div>
         <div class="hero-scroll-arrow" onclick="document.querySelector('.section-divider').scrollIntoView({behavior: 'smooth'})">↓</div>
     </section>
@@ -1231,14 +1241,14 @@ of reliability is everything in healthcare."</div>
                     </div>
                 </div>
                 <div class="slider-controls">
-                    <button class="slider-arrow" id="prev-slide">&#10094;</button>
+                    <button class="slider-arrow" id="prev-slide" aria-label="Previous testimonial">‹</button>
                     <div class="slider-dots">
                         <span class="slider-dot active" data-slide="0"></span>
                         <span class="slider-dot" data-slide="1"></span>
                         <span class="slider-dot" data-slide="2"></span>
                         <span class="slider-dot" data-slide="3"></span>
                     </div>
-                    <button class="slider-arrow" id="next-slide">&#10095;</button>
+                    <button class="slider-arrow" id="next-slide" aria-label="Next testimonial">›</button>
                 </div>
             </div>
         </div>
@@ -1293,7 +1303,6 @@ of reliability is everything in healthcare."</div>
 Monthly contracts available for regular routes.
 Every operation is different so contact us for 
 a quote built around your schedule and volume.</p>
-                <p class="pricing-subtext">Every operation is different - contact us for a quote built around your schedule and volume.</p>
                 <a href="#contact" class="btn btn-primary">Get Your Custom Quote</a>
             </div>
         </div>
@@ -1489,10 +1498,6 @@ No obligation. No pressure.</p>
 
     <div class="section-divider"></div>
 
-    <div class="footer-image">
-        <img src="https://i.imgur.com/ZiKd20b.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit professional courier Columbus Ohio" loading="lazy">
-    </div>
-
     <footer>
         <div class="container">
             <div class="footer-logo">
@@ -1503,7 +1508,7 @@ No obligation. No pressure.</p>
                 <strong>Certifications & Compliance:</strong>
                 <div class="certs-list">
                     <div class="cert">HIPAA Compliant</div>
-                    <div class="cert">DOT Certified</div>
+                    <div class="cert">HAZMAT Aware</div>
                     <div class="cert">Insured</div>
                     <div class="cert">Background Checked</div>
                 </div>
@@ -1570,26 +1575,34 @@ No obligation. No pressure.</p>
         function animateStats() {
             const stats = document.querySelectorAll('.stat-number');
             const statsSection = document.querySelector('.stats-section');
+            let hasAnimated = false;
+            
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        stats.forEach(stat => {
+                    if (entry.isIntersecting && !hasAnimated) {
+                        hasAnimated = true;
+                        stats.forEach((stat, index) => {
                             const target = parseFloat(stat.getAttribute('data-target'));
-                            const isPercentage = stat.textContent.includes('%');
-                            const isHour = stat.textContent.includes('hr');
                             let current = 0;
-                            const increment = target / 100;
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 20);
+                            
                             const timer = setInterval(() => {
                                 current += increment;
                                 if (current >= target) {
                                     current = target;
                                     clearInterval(timer);
                                 }
-                                if (isPercentage) {
+                                
+                                // Format based on index (which stat it is)
+                                if (index === 0 || index === 3) {
+                                    // On-Time Delivery Rate and HIPAA Compliant Runs - show as percentage
                                     stat.textContent = Math.floor(current) + '%';
-                                } else if (isHour) {
-                                    stat.textContent = Math.floor(current) + 'hr';
-                                } else {
+                                } else if (index === 1) {
+                                    // Average Response Time - show as hr
+                                    stat.textContent = current.toFixed(1) + 'hr';
+                                } else if (index === 2) {
+                                    // Days Available Per Week - show as decimal
                                     stat.textContent = current.toFixed(1);
                                 }
                             }, 20);
@@ -1597,7 +1610,7 @@ No obligation. No pressure.</p>
                         observer.unobserve(statsSection);
                     }
                 });
-            });
+            }, { threshold: 0.5 });
             observer.observe(statsSection);
         }
 
