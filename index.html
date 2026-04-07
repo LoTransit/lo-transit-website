@@ -171,14 +171,16 @@
 
         .hero {
             color: #fff;
-            padding: 6rem 2rem 5rem;
-            min-height: 60vh;
+            padding: 80px 20px;
+            min-height: 100vh;
             margin-top: 60px;
             text-align: center;
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            background: linear-gradient(135deg, #0A2A35 0%, #0F3F4A 40%, #1B6B7B 100%);
         }
 
         .hero::before {
@@ -188,40 +190,62 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: #0F3F4A;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.03) 10px,
+                    rgba(255, 255, 255, 0.03) 20px
+                );
             z-index: 1;
+            pointer-events: none;
         }
 
         .hero .container {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-accent {
+            width: 60px;
+            height: 4px;
+            background-color: #4ECFB5;
+            border-radius: 2px;
+            margin-bottom: 32px;
         }
 
         .hero h1 {
-            font-size: 80px;
-            line-height: 1.05;
-            margin-bottom: 1rem;
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 0;
             color: #ffffff;
             font-weight: 900;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.4);
+            max-width: 800px;
         }
 
         .hero .subtext {
-            font-size: 20px;
-            color: #ffffff;
-            margin-top: 16px;
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 24px;
             margin-bottom: 0;
-            opacity: 0.95;
+            font-weight: 400;
+            max-width: 600px;
         }
 
         .hero .phone {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 24px;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 32px;
             margin-bottom: 0;
-            color: #ffffff;
+            color: #4ECFB5;
+            letter-spacing: 0.02em;
         }
 
         .hero .cta-buttons {
@@ -229,18 +253,64 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 36px;
+            margin-top: 48px;
         }
 
         .hero .btn-primary {
             background-color: #4ECFB5;
             color: #0F3F4A;
             font-size: 18px;
-            padding: 24px 48px;
+            font-weight: 800;
+            padding: 20px 56px;
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(78, 207, 181, 0.45);
+            animation: pulse 2.5s ease-in-out infinite;
         }
 
         .hero .btn-primary:hover {
-            background-color: #fff;
+            background-color: #ffffff;
+            color: #0F3F4A;
+            transform: scale(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .hero-certs {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.15em;
+            margin-top: 20px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .hero-scroll-arrow {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            color: #4ECFB5;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 32px rgba(78, 207, 181, 0.45);
+            }
+            50% {
+                box-shadow: 0 8px 48px rgba(78, 207, 181, 0.65);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
         .services {
@@ -567,11 +637,11 @@
             }
 
             .hero {
-                padding: 8rem 1.5rem 6rem;
-            }
+            padding: 60px 1.5rem 100px;
+            margin-top: 60px;
 
             .hero h1 {
-                font-size: 42px;
+                font-size: 40px;
                 font-weight: 900;
             }
 
@@ -581,6 +651,15 @@
 
             .hero .phone {
                 font-size: 20px;
+            }
+
+            .hero .btn-primary {
+                padding: 16px 40px;
+                font-size: 16px;
+            }
+
+            .hero-accent {
+                margin-bottom: 24px;
             }
 
             .why-content {
@@ -634,16 +713,18 @@
         </div>
     </nav>
 
-    <section id="home" style="min-height:80vh; background-image: url('images/Medical_couriers_at_golden_hour_in_Columbus.png'); background-size:cover; background-position:center; background-repeat:no-repeat; position:relative; display:flex; align-items:center; justify-content:center;">
-        <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:rgba(15,63,74,0.3);"></div>
-        <div class="container" style="text-align:center;">
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-accent"></div>
             <h1>Reliable Medical Courier & Logistics You Can Count On</h1>
             <p class="subtext">Serving Columbus and Central Ohio — certified, compliant, and professional</p>
-            <p class="phone"><span aria-label="Phone">📞</span> (614) 653-7483</p>
+            <p class="phone">📞 (614) 653-7483</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get a Quote</a>
             </div>
+            <p class="hero-certs">HIPAA Certified · OSHA Compliant · Fully Insured</p>
         </div>
+        <div class="hero-scroll-arrow" onclick="document.querySelector('.section-divider').scrollIntoView({behavior: 'smooth'})">↓</div>
     </section>
 
     <div class="section-divider"></div>
