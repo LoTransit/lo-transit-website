@@ -1228,8 +1228,7 @@ across Columbus and Central Ohio.</p>
 part of our daily operations. Specimens arrive 
 on time every morning without fail. Reliable 
 does not even begin to cover it."</div>
-                        <div class="testimonial-author">Lab Operations Manager</div>
-                        <div class="testimonial-company">Central Ohio Medical Laboratory</div>
+                        <div class="testimonial-author">Lab Operations Manager, Central Ohio</div>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                     <div class="testimonial-slide">
@@ -1238,8 +1237,7 @@ being let down one too many times by our
 previous courier. The difference has been 
 night and day. Professional, responsive 
 and always compliant."</div>
-                        <div class="testimonial-author">Practice Manager</div>
-                        <div class="testimonial-company">Columbus Physician Group</div>
+                        <div class="testimonial-author">Practice Manager, Columbus Area Clinic</div>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                     <div class="testimonial-slide">
@@ -1247,8 +1245,7 @@ and always compliant."</div>
 they were up and running on our route 
 within days. Exactly what a busy pharmacy 
 needs in a courier partner."</div>
-                        <div class="testimonial-author">Pharmacy Manager</div>
-                        <div class="testimonial-company">Independent Pharmacy, Dublin OH</div>
+                        <div class="testimonial-author">Pharmacy Manager, Dublin OH</div>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                     <div class="testimonial-slide">
@@ -1256,8 +1253,7 @@ needs in a courier partner."</div>
 the communication. If anything changes 
 we hear about it immediately. That kind 
 of reliability is everything in healthcare."</div>
-                        <div class="testimonial-author">Clinical Director</div>
-                        <div class="testimonial-company">Urgent Care Clinic, Westerville OH</div>
+                        <div class="testimonial-author">Clinical Director, Westerville OH</div>
                         <div class="testimonial-stars">★★★★★</div>
                     </div>
                 </div>
@@ -1349,7 +1345,7 @@ are confirmed by our team.</p>
                     </div>
                     <div class="calculator-field">
                         <label for="distance">Distance in miles</label>
-                        <input type="number" id="distance" min="1" value="10">
+                        <input type="number" id="distance" min="1" value="">
                     </div>
                     <div class="calculator-field" style="grid-column: span 2;">
                         <label for="special-handling">Special Handling Required?</label>
@@ -1653,7 +1649,8 @@ No obligation. No pressure.</p>
                 // Show placeholder if distance is 0 or empty
                 if (distance <= 0) {
                     priceDisplay.innerHTML = '<span style="color: #999; font-style: italic; font-weight: 400;">Select a service and enter miles above to see your estimate</span>';
-                    priceDisplay.style.fontWeight = '400';
+                    priceDisplay.style.fontStyle = 'italic';
+                    priceDisplay.style.color = '#999';
                     return;
                 }
 
@@ -1712,7 +1709,7 @@ No obligation. No pressure.</p>
             distanceInput.addEventListener('input', calculatePrice);
             specialSelect.addEventListener('change', calculatePrice);
 
-            // Initial calculation - show placeholder
+            // Initial calculation - show placeholder if distance is empty
             calculatePrice();
         }
 
