@@ -401,13 +401,13 @@
 
         .day-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(7, minmax(100px, 1fr));
+            gap: 0.8rem;
             margin-top: 2rem;
         }
 
         .day-cell {
-            padding: 1.5rem;
+            padding: 1rem 0.8rem;
             border-radius: 0.75rem;
             text-align: center;
             font-weight: 600;
@@ -427,14 +427,20 @@
         }
 
         .day-cell .day-name {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .day-cell .day-hours {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.95;
+        }
+
+        @media (max-width: 900px) {
+            .day-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
         }
 
         .pricing {
