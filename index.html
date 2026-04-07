@@ -1060,7 +1060,10 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-accent"></div>
-            <h1>Your Columbus Medical Courier Team.<br>Reliable, Certified and Always On Time.</h1>
+            <h1>
+            <span style="display:block; font-size:clamp(36px,5vw,64px); font-weight:900; color:#ffffff; line-height:1.1;">Your Columbus Medical Courier Team.</span>
+            <span style="display:block; font-size:clamp(24px,3.5vw,48px); font-weight:700; color:#4ECFB5; line-height:1.2; margin-top:12px;">Reliable, Certified and Always On Time.</span>
+            </h1>
             <p class="subtext">HIPAA certified, OSHA compliant and fully insured. Serving Columbus and Central Ohio Monday to Saturday.</p>
             <p class="phone">📞 (614) 653-7483</p>
             <div class="cta-buttons">
@@ -1300,9 +1303,8 @@ of reliability is everything in healthcare."</div>
             <h2 class="section-title">Straightforward Pricing. No Surprises.</h2>
             <div class="pricing-content">
                 <p class="pricing-text">Routes from $95 per day. STAT runs from $110.
-Monthly contracts available for regular routes.
-Every operation is different so contact us for 
-a quote built around your schedule and volume.</p>
+Monthly contracts available for regular routes.</p>
+                <p class="pricing-subtext">Every operation is different - contact us for a quote built around your schedule and volume.</p>
                 <a href="#contact" class="btn btn-primary">Get Your Custom Quote</a>
             </div>
         </div>
@@ -1501,7 +1503,7 @@ No obligation. No pressure.</p>
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:40px;width:auto;" alt="Lo Transit Medical Courier Columbus Ohio" loading="eager">
+                <span style="font-family:'Raleway',sans-serif; font-size:24px; font-weight:800; color:#4ECFB5;">Lo</span><span style="font-family:'Montserrat',sans-serif; font-size:14px; font-weight:700; color:#ffffff; letter-spacing:0.2em;">TRANSIT</span>
             </div>
             <p style="text-align: center; font-size: 1.2rem; margin: 1rem 0; color: #4ECFB5; font-weight: 600;">Precision and care. Every mile.</p>
             <div class="certs">
@@ -1509,8 +1511,8 @@ No obligation. No pressure.</p>
                 <div class="certs-list">
                     <div class="cert">HIPAA Compliant</div>
                     <div class="cert">HAZMAT Aware</div>
-                    <div class="cert">Insured</div>
-                    <div class="cert">Background Checked</div>
+                    <div class="cert">OSHA BBP</div>
+                    <div class="cert">Fully Insured</div>
                 </div>
             </div>
             <p>&copy; 2026 Lo Transit LLC. All rights reserved.<br>
@@ -1574,44 +1576,41 @@ No obligation. No pressure.</p>
         // Stats Count-Up Animation
         function animateStats() {
             const stats = document.querySelectorAll('.stat-number');
-            const statsSection = document.querySelector('.stats-section');
             let hasAnimated = false;
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !hasAnimated) {
-                        hasAnimated = true;
-                        stats.forEach((stat, index) => {
-                            const target = parseFloat(stat.getAttribute('data-target'));
-                            let current = 0;
-                            const duration = 2000; // 2 seconds
-                            const increment = target / (duration / 20);
+            // Start animation 1 second after page load
+            setTimeout(() => {
+                if (!hasAnimated) {
+                    hasAnimated = true;
+                    stats.forEach((stat, index) => {
+                        const target = parseFloat(stat.getAttribute('data-target'));
+                        let current = 0;
+                        const duration = 2000; // 2 seconds total
+                        const interval = 50; // 50ms intervals
+                        const increment = target / (duration / interval);
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                current = target;
+                                clearInterval(timer);
+                            }
                             
-                            const timer = setInterval(() => {
-                                current += increment;
-                                if (current >= target) {
-                                    current = target;
-                                    clearInterval(timer);
-                                }
-                                
-                                // Format based on index (which stat it is)
-                                if (index === 0 || index === 3) {
-                                    // On-Time Delivery Rate and HIPAA Compliant Runs - show as percentage
-                                    stat.textContent = Math.floor(current) + '%';
-                                } else if (index === 1) {
-                                    // Average Response Time - show as hr
-                                    stat.textContent = current.toFixed(1) + 'hr';
-                                } else if (index === 2) {
-                                    // Days Available Per Week - show as decimal
-                                    stat.textContent = current.toFixed(1);
-                                }
-                            }, 20);
-                        });
-                        observer.unobserve(statsSection);
-                    }
-                });
-            }, { threshold: 0.5 });
-            observer.observe(statsSection);
+                            // Format based on index (which stat it is)
+                            if (index === 0 || index === 3) {
+                                // On-Time Delivery Rate and HIPAA Compliant Runs - show as percentage
+                                stat.textContent = Math.floor(current) + '%';
+                            } else if (index === 1) {
+                                // Average Response Time - show as hr
+                                stat.textContent = current.toFixed(1) + 'hr';
+                            } else if (index === 2) {
+                                // Days Available Per Week - show as decimal
+                                stat.textContent = current.toFixed(1);
+                            }
+                        }, interval);
+                    });
+                }
+            }, 1000);
         }
 
         // Initialize animations when DOM is loaded
@@ -1632,6 +1631,12 @@ No obligation. No pressure.</p>
                 const service = serviceSelect.value;
                 const distance = parseInt(distanceInput.value) || 0;
                 const special = specialSelect.value;
+
+                // Show placeholder if distance is 0 or empty
+                if (distance <= 0) {
+                    priceDisplay.innerHTML = '<span style="color: #999; font-style: italic; font-weight: 400;">Enter your details above to see an instant estimate</span>';
+                    return;
+                }
 
                 let basePrice = 0;
                 switch (service) {
@@ -1685,7 +1690,7 @@ No obligation. No pressure.</p>
             distanceInput.addEventListener('input', calculatePrice);
             specialSelect.addEventListener('change', calculatePrice);
 
-            // Initial calculation
+            // Initial calculation - show placeholder
             calculatePrice();
         }
 
