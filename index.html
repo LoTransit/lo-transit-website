@@ -536,6 +536,77 @@
             line-height: 1.6;
         }
 
+        .quote-calculator {
+            background-color: #fff;
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+
+        .calculator-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #EDF5F6 0%, #f0f8fa 100%);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border-left: 4px solid #1B6B7B;
+        }
+
+        .calculator-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .calculator-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .calculator-field label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1B6B7B;
+            font-size: 0.9rem;
+        }
+
+        .calculator-field select,
+        .calculator-field input {
+            padding: 0.75rem;
+            border: 2px solid #1B6B7B;
+            border-radius: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            background-color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        .calculator-field select:focus,
+        .calculator-field input:focus {
+            outline: none;
+            border-color: #4ECFB5;
+        }
+
+        .price-display {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: #1B6B7B;
+            border-radius: 0.75rem;
+            color: #fff;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #4ECFB5;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
         .who-section {
             background-color: #EDF5F6;
             text-align: center;
@@ -692,6 +763,106 @@
             padding-bottom: 1.5rem;
         }
 
+        .testimonials-section {
+            background-color: #0F3F4A;
+            color: #fff;
+            padding: 7rem 2rem;
+            text-align: center;
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #4ECFB5;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-company {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .slider-arrow {
+            background: none;
+            border: 2px solid #4ECFB5;
+            color: #4ECFB5;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .slider-arrow:hover {
+            background-color: #4ECFB5;
+            color: #0F3F4A;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4ECFB5;
+            opacity: 0.5;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-dot.active {
+            opacity: 1;
+        }
+
         footer {
             background-color: #0F3F4A;
             color: #fff;
@@ -831,6 +1002,29 @@
             .faq-answer {
                 padding: 0 1rem;
             }
+
+            .calculator-fields {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .price-amount {
+                font-size: 2rem;
+            }
+
+            .testimonial-quote {
+                font-size: 1rem;
+            }
+
+            .slider-controls {
+                gap: 0.5rem;
+            }
+
+            .slider-arrow {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -843,6 +1037,7 @@
             <ul>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#why">Why Us</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#availability">Availability</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -993,6 +1188,67 @@ this community. This is personal to us.</p>
 
     <div class="section-divider"></div>
 
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Clients Say</h2>
+            <p class="section-subtitle">Trusted by healthcare facilities 
+across Columbus and Central Ohio.</p>
+            <div class="testimonials-container">
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-quote">"Lo Transit have become an essential 
+part of our daily operations. Specimens arrive 
+on time every morning without fail. Reliable 
+does not even begin to cover it."</div>
+                        <div class="testimonial-author">Lab Operations Manager</div>
+                        <div class="testimonial-company">Central Ohio Medical Laboratory</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">"We switched to Lo Transit after 
+being let down one too many times by our 
+previous courier. The difference has been 
+night and day. Professional, responsive 
+and always compliant."</div>
+                        <div class="testimonial-author">Practice Manager</div>
+                        <div class="testimonial-company">Columbus Physician Group</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">"Getting a quote was simple and 
+they were up and running on our route 
+within days. Exactly what a busy pharmacy 
+needs in a courier partner."</div>
+                        <div class="testimonial-author">Pharmacy Manager</div>
+                        <div class="testimonial-company">Independent Pharmacy, Dublin OH</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-quote">"What sets Lo Transit apart is 
+the communication. If anything changes 
+we hear about it immediately. That kind 
+of reliability is everything in healthcare."</div>
+                        <div class="testimonial-author">Clinical Director</div>
+                        <div class="testimonial-company">Urgent Care Clinic, Westerville OH</div>
+                        <div class="testimonial-stars">★★★★★</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-arrow" id="prev-slide">&#10094;</button>
+                    <div class="slider-dots">
+                        <span class="slider-dot active" data-slide="0"></span>
+                        <span class="slider-dot" data-slide="1"></span>
+                        <span class="slider-dot" data-slide="2"></span>
+                        <span class="slider-dot" data-slide="3"></span>
+                    </div>
+                    <button class="slider-arrow" id="next-slide">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <section class="availability" id="availability">
         <div class="container">
             <h2 class="section-title">Our Schedule</h2>
@@ -1042,6 +1298,48 @@ Every operation is different so contact us for
 a quote built around your schedule and volume.</p>
                 <p class="pricing-subtext">Every operation is different - contact us for a quote built around your schedule and volume.</p>
                 <a href="#contact" class="btn btn-primary">Get Your Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <section class="quote-calculator">
+        <div class="container">
+            <h2 class="section-title">Get An Instant Estimate</h2>
+            <p class="section-subtitle">Enter your delivery details below 
+for an instant price guide. Final quotes 
+are confirmed by our team.</p>
+            <div class="calculator-container">
+                <div class="calculator-fields">
+                    <div class="calculator-field">
+                        <label for="service-type">Service Type</label>
+                        <select id="service-type">
+                            <option value="scheduled">Scheduled Daily Route</option>
+                            <option value="same-day">Same-Day Delivery</option>
+                            <option value="stat">STAT Urgent Run</option>
+                            <option value="monthly">Monthly Contract</option>
+                        </select>
+                    </div>
+                    <div class="calculator-field">
+                        <label for="distance">Distance in miles</label>
+                        <input type="number" id="distance" min="1" value="10">
+                    </div>
+                    <div class="calculator-field" style="grid-column: span 2;">
+                        <label for="special-handling">Special Handling Required?</label>
+                        <select id="special-handling">
+                            <option value="none">No special handling</option>
+                            <option value="temperature">Temperature sensitive cargo</option>
+                            <option value="biohazard">Biohazard specimens</option>
+                            <option value="equipment">Medical equipment</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="price-display">
+                    <div class="price-amount" id="estimated-price">Estimated: $95</div>
+                    <div class="price-note">This is a guide price. Contact us for your exact quote.</div>
+                </div>
+                <a href="#contact" class="btn btn-primary">Request This Quote</a>
             </div>
         </div>
     </section>
@@ -1309,7 +1607,137 @@ No obligation. No pressure.</p>
         // Initialize animations when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             animateStats();
+            initQuoteCalculator();
+            initTestimonialsSlider();
         });
+
+        // Quote Calculator
+        function initQuoteCalculator() {
+            const serviceSelect = document.getElementById('service-type');
+            const distanceInput = document.getElementById('distance');
+            const specialSelect = document.getElementById('special-handling');
+            const priceDisplay = document.getElementById('estimated-price');
+
+            function calculatePrice() {
+                const service = serviceSelect.value;
+                const distance = parseInt(distanceInput.value) || 0;
+                const special = specialSelect.value;
+
+                let basePrice = 0;
+                switch (service) {
+                    case 'scheduled':
+                        basePrice = 95;
+                        break;
+                    case 'same-day':
+                        basePrice = 55;
+                        break;
+                    case 'stat':
+                        basePrice = 110;
+                        break;
+                    case 'monthly':
+                        basePrice = 1200;
+                        break;
+                    default:
+                        basePrice = 95;
+                }
+
+                // Distance multiplier
+                let multiplier = 1;
+                if (distance > 50) {
+                    multiplier = 2.0;
+                } else if (distance > 30) {
+                    multiplier = 1.6;
+                } else if (distance > 20) {
+                    multiplier = 1.4;
+                } else if (distance > 10) {
+                    multiplier = 1.2;
+                }
+
+                let price = basePrice * multiplier;
+
+                // Special handling additions
+                switch (special) {
+                    case 'temperature':
+                        price += 20;
+                        break;
+                    case 'biohazard':
+                        price += 25;
+                        break;
+                    case 'equipment':
+                        price += 35;
+                        break;
+                }
+
+                priceDisplay.textContent = `Estimated: $${Math.round(price)}`;
+            }
+
+            serviceSelect.addEventListener('change', calculatePrice);
+            distanceInput.addEventListener('input', calculatePrice);
+            specialSelect.addEventListener('change', calculatePrice);
+
+            // Initial calculation
+            calculatePrice();
+        }
+
+        // Testimonials Slider
+        function initTestimonialsSlider() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevBtn = document.getElementById('prev-slide');
+            const nextBtn = document.getElementById('next-slide');
+            let currentSlide = 0;
+            let autoSlideInterval;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slides[index].classList.add('active');
+                dots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+
+            nextBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    stopAutoSlide();
+                    showSlide(index);
+                    startAutoSlide();
+                });
+            });
+
+            // Start auto slide
+            startAutoSlide();
+        }
     </script>
 </body>
 </html>
