@@ -1362,7 +1362,7 @@ are confirmed by our team.</p>
                     </div>
                 </div>
                 <div class="price-display">
-                    <div class="price-amount" id="estimated-price">Estimated: $95</div>
+                    <div class="price-amount" id="estimated-price" style="color: #999; font-style: italic; font-weight: 400;">Select a service and enter miles above to see your estimate</div>
                     <div class="price-note">This is a guide price. Contact us for your exact quote.</div>
                 </div>
                 <a href="#contact" class="btn btn-primary">Request This Quote</a>
@@ -1652,7 +1652,8 @@ No obligation. No pressure.</p>
 
                 // Show placeholder if distance is 0 or empty
                 if (distance <= 0) {
-                    priceDisplay.innerHTML = '<span style="color: #999; font-style: italic; font-weight: 400;">Enter your details above to see an instant estimate</span>';
+                    priceDisplay.innerHTML = '<span style="color: #999; font-style: italic; font-weight: 400;">Select a service and enter miles above to see your estimate</span>';
+                    priceDisplay.style.fontWeight = '400';
                     return;
                 }
 
@@ -1701,7 +1702,10 @@ No obligation. No pressure.</p>
                         break;
                 }
 
+                // Show the price with normal styling
                 priceDisplay.textContent = `Estimated: $${Math.round(price)}`;
+                priceDisplay.style.fontStyle = 'normal';
+                priceDisplay.style.color = '#4ECFB5';
             }
 
             serviceSelect.addEventListener('change', calculatePrice);
