@@ -180,7 +180,22 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0A2A35 0%, #0F3F4A 40%, #1B6B7B 100%);
+            background-image: url('https://i.imgur.com/8DyrJE3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 63, 74, 0.65);
+            z-index: 0;
+            pointer-events: none;
         }
 
         .hero::before {
@@ -198,13 +213,13 @@
                     rgba(255, 255, 255, 0.03) 10px,
                     rgba(255, 255, 255, 0.03) 20px
                 );
-            z-index: 1;
+            z-index: 2;
             pointer-events: none;
         }
 
         .hero .container {
             position: relative;
-            z-index: 2;
+            z-index: 3;
             max-width: 800px;
             margin: 0 auto;
             display: flex;
@@ -292,7 +307,7 @@
             color: #4ECFB5;
             animation: bounce 2s infinite;
             cursor: pointer;
-            z-index: 3;
+            z-index: 4;
         }
 
         @keyframes pulse {
@@ -704,10 +719,7 @@
     <nav>
         <div class="container">
             <a href="#home" class="logo">
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <span style="font-family:'Raleway',sans-serif; font-size:26px; font-weight:800; color:#4ECFB5;">Lo</span>
-                    <span style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:#ffffff; letter-spacing:0.15em;">TRANSIT</span>
-                </div>
+                <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:45px;width:auto;" alt="Lo Transit Medical Courier Columbus Ohio" loading="eager">
             </a>
             <ul>
                 <li><a href="#services">Services</a></li>
@@ -739,7 +751,7 @@
         <div class="container">
             <h2 class="section-title">Our Services</h2>
             <p class="section-subtitle">Comprehensive medical logistics solutions for Columbus and Central Ohio facilities</p>
-            <img src="images/Lo_Transit_van_at_hospital_entrance.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit medical courier van outside Columbus Ohio hospital">
+            <img src="https://i.imgur.com/DcDTdgO.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit medical courier van outside Columbus Ohio hospital" loading="lazy">
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon" aria-label="Lab specimens icon">🩸</div>
@@ -799,8 +811,8 @@
                     </div>
                 </div>
                 <div class="why-images">
-                    <img src="images/Medical_courier_in_hospital_corridor.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit HIPAA certified courier in Columbus Ohio hospital">
-                    <img src="images/Medical_courier_handling_biohazard_specimen_bag.png" style="width:100%;height:320px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit chain of custody biohazard specimen handling Columbus Ohio">
+                    <img src="https://i.imgur.com/iQRATR4.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit HIPAA certified courier in Columbus Ohio hospital" loading="lazy">
+                    <img src="https://i.imgur.com/3A0hj7e.png" style="width:100%;height:320px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit chain of custody biohazard specimen handling Columbus Ohio" loading="lazy">
                 </div>
             </div>
         </div>
@@ -927,16 +939,13 @@
     <div class="section-divider"></div>
 
     <div class="footer-image">
-        <img src="images/Professional_courier_with_specimen_transport_bag.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit courier with specimen bag Columbus Ohio">
+        <img src="https://i.imgur.com/ZiKd20b.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit professional courier Columbus Ohio" loading="lazy">
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <div style="display:flex; align-items:center; gap:8px; justify-content:center;">
-                    <span style="font-family:'Raleway',sans-serif; font-size:26px; font-weight:800; color:#4ECFB5;">Lo</span>
-                    <span style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:#ffffff; letter-spacing:0.15em;">TRANSIT</span>
-                </div>
+                <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:40px;width:auto;" alt="Lo Transit Medical Courier Columbus Ohio" loading="eager">
             </div>
             <div class="certs">
                 <strong>Certifications & Compliance:</strong>
