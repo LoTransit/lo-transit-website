@@ -328,6 +328,41 @@
             }
         }
 
+        .stats-section {
+            background-color: #0F3F4A;
+            color: #fff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #4ECFB5;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #fff;
+            font-weight: 500;
+        }
+
         .services {
             background-color: #EDF5F6;
         }
@@ -595,6 +630,68 @@
             background-color: #fff;
         }
 
+        .faq-section {
+            background-color: #EDF5F6;
+            padding: 7rem 2rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(27, 107, 123, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1B6B7B;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: #4ECFB5;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+
         footer {
             background-color: #0F3F4A;
             color: #fff;
@@ -716,6 +813,24 @@
             .footer-image {
                 padding: 1.5rem 1rem;
             }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 1rem;
+            }
         }
     </style>
 </head>
@@ -730,6 +845,7 @@
                 <li><a href="#why">Why Us</a></li>
                 <li><a href="#availability">Availability</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -738,8 +854,12 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-accent"></div>
-            <h1>Reliable Medical Courier & Logistics You Can Count On</h1>
-            <p class="subtext">Serving Columbus and Central Ohio. Certified, compliant and professional.</p>
+            <h1>Your Columbus Medical Courier Team.
+Reliable, Certified and Always On Time.</h1>
+            <p class="subtext">We handle your specimens, medications and medical 
+records with the care they deserve. HIPAA certified, 
+OSHA compliant and fully insured. Serving Columbus 
+and Central Ohio Monday to Saturday.</p>
             <p class="phone">📞 (614) 653-7483</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get a Quote</a>
@@ -749,33 +869,68 @@
         <div class="hero-scroll-arrow" onclick="document.querySelector('.section-divider').scrollIntoView({behavior: 'smooth'})">↓</div>
     </section>
 
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0%</div>
+                    <div class="stat-label">On-Time Delivery Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="2">0hr</div>
+                    <div class="stat-label">Average Response Time</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="5.5">0</div>
+                    <div class="stat-label">Days Available Per Week</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0%</div>
+                    <div class="stat-label">HIPAA Compliant Runs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <div class="section-divider"></div>
 
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive medical logistics solutions for Columbus and Central Ohio facilities</p>
+            <h2 class="section-title">What We Carry. How We Carry It.</h2>
+            <p class="section-subtitle">Every item we transport is handled with clinical 
+precision and full chain of custody documentation.
+Your patients depend on it. So do we.</p>
             <img src="https://i.imgur.com/DcDTdgO.png" style="width:100%;height:380px;object-fit:cover;border-radius:12px;display:block;" alt="Lo Transit medical courier van outside Columbus Ohio hospital" loading="lazy">
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon" aria-label="Lab specimens icon">🩸</div>
                     <h3>Lab Specimens</h3>
-                    <p>Secure, temperature-controlled transport of blood samples, cultures and tissue specimens to laboratories with chain-of-custody documentation.</p>
+                    <p>Blood draws, urine samples and tissue 
+specimens transported safely with temperature 
+control and full documentation. Never late.
+Never compromised.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon" aria-label="Pharmaceuticals icon">💊</div>
                     <h3>Pharmaceuticals</h3>
-                    <p>HIPAA-compliant delivery of medications, biologics and controlled substances with temperature monitoring and proper handling protocols.</p>
+                    <p>Prescription medications and controlled 
+substances delivered securely to your facility 
+or directly to patients. Discreet, compliant 
+and on schedule.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon" aria-label="Medical records icon">📋</div>
                     <h3>Medical Records</h3>
-                    <p>Confidential transport of patient records, charts and documents between facilities in secure, locked containers.</p>
+                    <p>Confidential patient documents handled 
+with full HIPAA compliance. We treat your 
+patients' privacy with the same care you do.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon" aria-label="Medical supplies icon">🏥</div>
                     <h3>Medical Supplies</h3>
-                    <p>Reliable delivery of equipment, imaging films, bandages and other medical supplies to hospitals, clinics and physician offices.</p>
+                    <p>PPE, clinical equipment and facility 
+supplies transported between sites efficiently.
+We keep your operations moving.</p>
                 </div>
             </div>
         </div>
@@ -785,33 +940,48 @@
 
     <section class="why-section" id="why">
         <div class="container">
-            <h2 class="section-title">Why Lo Transit</h2>
-            <p class="section-subtitle">Six reasons Columbus and Central Ohio medical facilities trust us</p>
+            <h2 class="section-title">Why Columbus Healthcare Teams Choose Us</h2>
+            <p class="section-subtitle">We built Lo Transit because healthcare providers 
+deserve a courier that understands what's at stake.
+Not just a driver. A trusted logistics partner.</p>
             <div class="why-content">
                 <div class="trust-grid">
                     <div class="trust-card">
-                        <h4>✓ HIPAA Compliant</h4>
-                        <p>Full compliance with healthcare privacy regulations and secure handling protocols.</p>
+                        <h4>HIPAA Certified</h4>
+                        <p>Every driver is HIPAA certified. Patient 
+information and sensitive cargo are handled with 
+full regulatory compliance on every single run.</p>
                     </div>
                     <div class="trust-card">
-                        <h4>✓ Always On Time</h4>
-                        <p>Reliable, punctual deliveries that keep your operations running smoothly.</p>
+                        <h4>On Time. Every Time.</h4>
+                        <p>We know a late delivery in healthcare 
+is not just an inconvenience. We track every 
+run and communicate proactively if anything 
+changes.</p>
                     </div>
                     <div class="trust-card">
-                        <h4>✓ Temp-Sensitive Ready</h4>
-                        <p>Climate-controlled vehicles for temperature-sensitive specimens and medications.</p>
+                        <h4>Temperature Controlled</h4>
+                        <p>Insulated transport for specimens and 
+medications that require precise temperature 
+maintenance throughout transit.</p>
                     </div>
                     <div class="trust-card">
-                        <h4>✓ GPS Tracked</h4>
-                        <p>Real-time GPS tracking for complete visibility and security of each delivery.</p>
+                        <h4>Real-Time Tracking</h4>
+                        <p>GPS tracked on every route. You always 
+know exactly where your delivery is and when 
+it will arrive.</p>
                     </div>
                     <div class="trust-card">
-                        <h4>✓ Full Documentation</h4>
-                        <p>Comprehensive delivery documentation and chain-of-custody records for compliance.</p>
+                        <h4>Full Chain of Custody</h4>
+                        <p>Digital proof of delivery, incident logs 
+and chain of custody records on every run.
+Everything documented. Nothing left to chance.</p>
                     </div>
                     <div class="trust-card">
-                        <h4>✓ Locally Owned</h4>
-                        <p>Columbus-based company invested in serving our community responsibly.</p>
+                        <h4>Columbus Born and Built</h4>
+                        <p>We are a locally owned Columbus business.
+We know these streets, these facilities and 
+this community. This is personal to us.</p>
                     </div>
                 </div>
                 <div class="why-images">
@@ -864,11 +1034,14 @@
 
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title">Transparent, Competitive Pricing</h2>
+            <h2 class="section-title">Straightforward Pricing. No Surprises.</h2>
             <div class="pricing-content">
-                <p class="pricing-text">Routes from $95/day · STAT runs from $110 · Monthly contracts available</p>
+                <p class="pricing-text">Routes from $95 per day. STAT runs from $110.
+Monthly contracts available for regular routes.
+Every operation is different so contact us for 
+a quote built around your schedule and volume.</p>
                 <p class="pricing-subtext">Every operation is different - contact us for a quote built around your schedule and volume.</p>
-                <a href="#contact" class="btn btn-primary">Get a Quote</a>
+                <a href="#contact" class="btn btn-primary">Get Your Custom Quote</a>
             </div>
         </div>
     </section>
@@ -877,8 +1050,9 @@
 
     <section class="who-section" id="serve">
         <div class="container">
-            <h2 class="section-title">Who We Serve</h2>
-            <p class="section-subtitle">Trusted by Columbus-area healthcare organizations</p>
+            <h2 class="section-title">Who We Work With</h2>
+            <p class="section-subtitle">Trusted by healthcare facilities across 
+Columbus and Central Ohio.</p>
             <div class="chips-container">
                 <span class="chip">Hospitals</span>
                 <span class="chip">Medical Labs</span>
@@ -894,10 +1068,89 @@
 
     <div class="section-divider"></div>
 
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Are you HIPAA certified?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Every Lo Transit driver holds current 
+HIPAA certification. All cargo and patient 
+information is handled in full compliance 
+with federal healthcare privacy regulations.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What areas do you cover?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We serve Columbus and all of Central Ohio 
+including Dublin, Westerville, Gahanna, 
+Upper Arlington, Hilliard, Grove City, 
+Reynoldsburg and surrounding areas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How quickly can you respond to an urgent run?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>For STAT and urgent runs we aim to dispatch 
+within 30 minutes. Call us directly on 
+(614) 653-7483 for immediate dispatch.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you handle temperature sensitive cargo?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. We carry insulated transport bags 
+and coolers for specimens and medications 
+requiring temperature control throughout transit.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How do I get started?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simply fill in the quote form on this page 
+or call us directly. We will respond within 
+2 hours with a custom quote for your route.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you offer monthly contracts?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes. Monthly contracts start from $1,200 
+and are ideal for facilities with regular 
+daily or weekly pickup and delivery needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title contact-title">Request a Quote</h2>
-            <p class="section-subtitle" style="color: #aaa;">Tell us about your delivery needs</p>
+            <h2 class="section-title contact-title">Let's Talk About Your Delivery Needs</h2>
+            <p class="section-subtitle" style="color: #aaa;">Tell us what you need and we will come back 
+to you within 2 hours with a custom quote.
+No obligation. No pressure.</p>
             <div class="form-container">
                 <form id="contactForm">
                     <div class="form-group">
@@ -950,6 +1203,7 @@
             <div class="footer-logo">
                 <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:40px;width:auto;" alt="Lo Transit Medical Courier Columbus Ohio" loading="eager">
             </div>
+            <p style="text-align: center; font-size: 1.2rem; margin: 1rem 0; color: #4ECFB5; font-weight: 600;">Precision and care. Every mile.</p>
             <div class="certs">
                 <strong>Certifications & Compliance:</strong>
                 <div class="certs-list">
@@ -997,6 +1251,64 @@
                 e.preventDefault();
                 document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
             });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+                
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Stats Count-Up Animation
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stats.forEach(stat => {
+                            const target = parseFloat(stat.getAttribute('data-target'));
+                            const isPercentage = stat.textContent.includes('%');
+                            const isHour = stat.textContent.includes('hr');
+                            let current = 0;
+                            const increment = target / 100;
+                            const timer = setInterval(() => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    clearInterval(timer);
+                                }
+                                if (isPercentage) {
+                                    stat.textContent = Math.floor(current) + '%';
+                                } else if (isHour) {
+                                    stat.textContent = Math.floor(current) + 'hr';
+                                } else {
+                                    stat.textContent = current.toFixed(1);
+                                }
+                            }, 20);
+                        });
+                        observer.unobserve(statsSection);
+                    }
+                });
+            });
+            observer.observe(statsSection);
+        }
+
+        // Initialize animations when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            animateStats();
         });
     </script>
 </body>
