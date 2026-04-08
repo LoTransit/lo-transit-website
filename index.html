@@ -93,6 +93,33 @@
             align-items: center;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -5px);
+        }
+
         nav .logo {
             text-decoration: none;
         }
@@ -184,6 +211,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            overflow: hidden;
         }
 
         .hero::after {
@@ -224,7 +252,7 @@
             max-width: 1100px;
             margin: 0 auto;
             text-align: center;
-            padding: 0 60px 0 40px;
+            padding: 0 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -677,13 +705,7 @@
             border: 1px solid #4ECFB5;
             border-radius: 0.5rem;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            background-color: #0F3F4A;
-            color: #fff;
-            transition: border-color 0.3s ease;
-        }
-
-        input::placeholder, textarea::placeholder {
+                font-size: 16px;
             color: #aaa;
         }
 
@@ -938,51 +960,49 @@
                 font-size: 0.8rem;
             }
 
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 63, 74, 0.98);
+                backdrop-filter: blur(5px);
+                flex-direction: column;
+                padding: 1rem 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            nav li a {
+                padding: 0.75rem 1rem;
+                display: block;
+                font-size: 1rem;
+            }
+
             .section {
                 padding: 5rem 1.5rem;
             }
 
             .section-title {
                 font-size: 2rem;
-            }
-
-            .hero {
-            padding: 60px 1.5rem 100px;
-            margin-top: 60px;
-
-            .hero h1 {
-                font-size: 40px;
-                font-weight: 900;
-            }
-
-            .hero h1 span {
-                white-space: normal !important;
-                font-size: 32px !important;
-            }
-
-            .hero h1 span:first-child {
-                font-size: 32px !important;
-            }
-
-            .hero h1 span:last-child {
-                font-size: 24px !important;
-            }
-
-            .hero .subtext {
-                font-size: 18px;
-            }
-
-            .hero .phone {
-                font-size: 20px;
-            }
-
-            .hero .btn-primary {
-                padding: 16px 40px;
-                font-size: 16px;
-            }
-
-            .hero-accent {
-                margin-bottom: 24px;
             }
 
             .why-content {
@@ -1010,6 +1030,16 @@
 
             .footer-image {
                 padding: 1.5rem 1rem;
+            }
+
+            footer {
+                text-align: center;
+            }
+
+            footer .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .stats-grid {
@@ -1048,10 +1078,32 @@
             }
 
             .slider-arrow {
-                width: 35px;
-                height: 35px;
+                width: 44px;
+                height: 44px;
                 font-size: 1rem;
             }
+        }
+
+        @media (max-width: 768px) {
+            .why-images { display: none; }
+            .trust-grid { width: 100%; }
+
+            .calculator-field select,
+            .calculator-field input {
+                font-size: 16px;
+            }
+
+            .price-display {
+                max-height: 120px;
+                overflow: hidden;
+            }
+
+            .container { padding: 0 16px; }
+            section { padding: 48px 16px; }
+            h2 { font-size: 26px; }
+            .grid-2col { grid-template-columns: 1fr; }
+            .grid-3col { grid-template-columns: 1fr; }
+            img { max-width: 100%; height: auto; }
         }
     </style>
 </head>
@@ -1059,7 +1111,10 @@
     <nav>
         <div class="container">
             <a href="#home" class="logo">
-                <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:50px;width:auto;background:transparent;border:none;padding:0;" alt="Lo Transit Medical Courier Columbus Ohio" loading="eager">
+                <div style="display:flex; align-items:center; gap:6px; text-decoration:none;">
+                    <span style="font-family:'Raleway',sans-serif; font-size:28px; font-weight:900; color:#4ECFB5;">Lo</span>
+                    <span style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:#ffffff; letter-spacing:0.18em;">TRANSIT</span>
+                </div>
             </a>
             <ul>
                 <li><a href="#services">Services</a></li>
@@ -1070,6 +1125,11 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -1077,9 +1137,9 @@
         <div class="container">
             <div class="hero-accent"></div>
             <h1>
-            <div style="width: 100%; text-align: center; overflow: visible;">
-                <span style="display: block; font-size: 62.4px; font-weight: 900; color: #ffffff; text-align: center; white-space: nowrap;">Your Columbus Courier Team.</span>
-                <span style="display: block; font-size: 45.6px; font-weight: 700; color: #4ECFB5; text-align: center; white-space: nowrap; margin-top: 16px;">Reliable, Certified and Always On Time.</span>
+            <div style="width: 100%; text-align: center; overflow: hidden;">
+                <span style="display: block; font-size: clamp(24px, 5vw, 64px); font-weight: 900; color: #ffffff; text-align: center;">Your Columbus Courier Team.</span>
+                <span style="display: block; font-size: clamp(18px, 3.5vw, 48px); font-weight: 700; color: #4ECFB5; text-align: center; margin-top: 16px;">Reliable, Certified and Always On Time.</span>
             </div>
             </h1>
             <p class="subtext">HIPAA certified, OSHA compliant and fully insured. Serving Columbus and Central Ohio Monday to Saturday.</p>
@@ -1344,8 +1404,8 @@ are confirmed by our team.</p>
                         </select>
                     </div>
                     <div class="calculator-field">
-                        <label for="distance">Distance in miles</label>
-                        <input type="number" id="distance" min="1" value="">
+                        <label for="miles">Distance in miles</label>
+                        <input type="number" id="miles" min="1" value="">
                     </div>
                     <div class="calculator-field" style="grid-column: span 2;">
                         <label for="special-handling">Special Handling Required?</label>
@@ -1358,7 +1418,7 @@ are confirmed by our team.</p>
                     </div>
                 </div>
                 <div class="price-display">
-                    <div class="price-amount" id="estimated-price" style="color: #999; font-style: italic; font-weight: 400;">Select a service and enter miles above to see your estimate</div>
+                    <div class="price-amount" id="estimate-result"><p style="color:#888; font-style:italic; font-size:14px;">Select a service and enter miles above to see your estimate</p></div>
                     <div class="price-note">This is a guide price. Contact us for your exact quote.</div>
                 </div>
                 <a href="#contact" class="btn btn-primary">Request This Quote</a>
@@ -1517,7 +1577,10 @@ No obligation. No pressure.</p>
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="https://i.imgur.com/PsTs5Fz.jpeg" style="height:55px; width:auto; display:block; margin:0 auto 16px auto; border-radius:4px;" alt="Lo Transit Medical Courier Columbus Ohio">
+                <div style="display:flex; align-items:center; gap:6px; text-decoration:none; justify-content: center;">
+                    <span style="font-family:'Raleway',sans-serif; font-size:28px; font-weight:900; color:#4ECFB5;">Lo</span>
+                    <span style="font-family:'Montserrat',sans-serif; font-size:16px; font-weight:700; color:#ffffff; letter-spacing:0.18em;">TRANSIT</span>
+                </div>
             </div>
             <p style="text-align: center; font-size: 1.2rem; margin: 1rem 0; color: #4ECFB5; font-weight: 600;">Precision and care. Every mile.</p>
             <div class="certs">
@@ -1637,22 +1700,19 @@ No obligation. No pressure.</p>
         // Quote Calculator
         function initQuoteCalculator() {
             const serviceSelect = document.getElementById('service-type');
-            const distanceInput = document.getElementById('distance');
+            const milesInput = document.getElementById('miles');
             const specialSelect = document.getElementById('special-handling');
-            const priceDisplay = document.getElementById('estimated-price');
+            const priceDisplay = document.getElementById('estimate-result');
 
             function calculatePrice() {
-                const service = serviceSelect.value;
-                const distance = parseInt(distanceInput.value) || 0;
-                const special = specialSelect.value;
-
-                // Show placeholder if distance is 0 or empty
-                if (distance <= 0) {
-                    priceDisplay.innerHTML = '<span style="color: #999; font-style: italic; font-weight: 400;">Select a service and enter miles above to see your estimate</span>';
-                    priceDisplay.style.fontStyle = 'italic';
-                    priceDisplay.style.color = '#999';
+                const miles = parseFloat(document.getElementById('miles').value) || 0;
+                if (miles === 0) {
+                    priceDisplay.innerHTML = '<p style="color:#888; font-style:italic; font-size:14px;">Select a service and enter miles above to see your estimate</p>';
                     return;
                 }
+
+                const service = serviceSelect.value;
+                const special = specialSelect.value;
 
                 let basePrice = 0;
                 switch (service) {
@@ -1674,13 +1734,13 @@ No obligation. No pressure.</p>
 
                 // Distance multiplier
                 let multiplier = 1;
-                if (distance > 50) {
+                if (miles > 50) {
                     multiplier = 2.0;
-                } else if (distance > 30) {
+                } else if (miles > 30) {
                     multiplier = 1.6;
-                } else if (distance > 20) {
+                } else if (miles > 20) {
                     multiplier = 1.4;
-                } else if (distance > 10) {
+                } else if (miles > 10) {
                     multiplier = 1.2;
                 }
 
@@ -1705,12 +1765,7 @@ No obligation. No pressure.</p>
                 priceDisplay.style.color = '#4ECFB5';
             }
 
-            serviceSelect.addEventListener('change', calculatePrice);
-            distanceInput.addEventListener('input', calculatePrice);
-            specialSelect.addEventListener('change', calculatePrice);
-
-            // Initial calculation - show placeholder if distance is empty
-            calculatePrice();
+            milesInput.addEventListener('input', calculatePrice);
         }
 
         // Testimonials Slider
@@ -1772,6 +1827,23 @@ No obligation. No pressure.</p>
             // Start auto slide
             startAutoSlide();
         }
+
+        // Hamburger Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('nav ul');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
