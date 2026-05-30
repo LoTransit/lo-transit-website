@@ -472,18 +472,30 @@
         }
 
         .availability {
-            background-color: #EDF5F6;
+            background: linear-gradient(135deg, #0F3F4A 0%, #1B6B7B 100%);
+        }
+
+        .availability .section-title {
+            color: #fff;
+        }
+
+        .availability .section-subtitle {
+            color: rgba(255,255,255,0.7);
         }
 
         .day-grid {
             display: grid;
-            grid-template-columns: repeat(7, minmax(100px, 1fr));
-            gap: 0.8rem;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.75rem;
             margin-top: 2rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
         }
 
         .day-cell {
-            padding: 1rem 0.8rem;
+            padding: 1.2rem 0.5rem;
             border-radius: 0.75rem;
             text-align: center;
             font-weight: 600;
@@ -491,31 +503,34 @@
         }
 
         .day-cell.full {
-            background: linear-gradient(135deg, #1B6B7B 0%, #4ECFB5 100%);
+            background: rgba(78,207,181,0.2);
+            border: 1px solid rgba(78,207,181,0.5);
         }
 
         .day-cell.partial {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            background: rgba(245,158,11,0.2);
+            border: 1px solid rgba(245,158,11,0.5);
         }
 
         .day-cell.closed {
-            background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+            background: rgba(156,163,175,0.1);
+            border: 1px solid rgba(156,163,175,0.25);
         }
 
         .day-cell .day-name {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
         }
 
-        .day-cell .day-hours {
-            font-size: 0.85rem;
-            opacity: 0.95;
-        }
+        .day-cell.full .day-hours { color: #4ECFB5; font-size: 0.8rem; font-weight: 600; }
+        .day-cell.partial .day-hours { color: #f59e0b; font-size: 0.8rem; font-weight: 600; }
+        .day-cell.closed .day-hours { color: #9ca3af; font-size: 0.8rem; font-weight: 600; }
 
         @media (max-width: 900px) {
             .day-grid {
-                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
         }
 
@@ -1315,6 +1330,11 @@ this community. This is personal to us.</p>
                     <div class="day-name">Sunday</div>
                     <div class="day-hours">Closed</div>
                 </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:24px; margin-top:20px; flex-wrap:wrap;">
+                <span style="display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.7);"><span style="width:10px; height:10px; border-radius:50%; background:#4ECFB5; display:inline-block;"></span>Full Day</span>
+                <span style="display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.7);"><span style="width:10px; height:10px; border-radius:50%; background:#f59e0b; display:inline-block;"></span>Partial Day</span>
+                <span style="display:flex; align-items:center; gap:6px; font-size:13px; color:rgba(255,255,255,0.7);"><span style="width:10px; height:10px; border-radius:50%; background:#9ca3af; display:inline-block;"></span>Closed</span>
             </div>
         </div>
     </section>
